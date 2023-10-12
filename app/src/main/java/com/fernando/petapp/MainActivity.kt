@@ -9,11 +9,13 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.fernando.petapp.databinding.ActivityMainBinding
 
 private lateinit var binding: ActivityMainBinding
 
 private lateinit var adapter: AdapterPet
+
 
 val listaPets = mutableListOf(
     Pets(
@@ -50,6 +52,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         RecyclerInit()
         configListener()
+        bdInit()
+    }
+
+    private fun bdInit() {
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "AppDataBase"
+        ).build()
+
+        val listaDePerros : List<Pet> = listOf(Pet(1, "Sergio", "Comunista"))
+
+        db.userDao().insertarPerro(listaDePerros)
+
+
     }
 
     private fun configListener() {
