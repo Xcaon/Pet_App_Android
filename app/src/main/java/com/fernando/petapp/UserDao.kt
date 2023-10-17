@@ -10,10 +10,10 @@ interface UserDao {
 
     // Esto es una consulta
     @Query("SELECT * FROM pet")
-    fun getAll(): List<Pet>
+    fun getAll(): MutableList<Pet>
 
     @Insert
-    fun insertarPerro(perros: List<Pet>)
+    fun insertarPerro(perro: Pet)
 
     @Delete
     fun delete(pet: Pet)

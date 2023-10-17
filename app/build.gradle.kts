@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 
@@ -43,8 +44,14 @@ android {
 }
 
 dependencies {
-    // room
 
+
+
+    // Corutinas
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+
+    // room
     val room_version = "2.5.0"
 
     implementation("androidx.room:room-runtime:$room_version")

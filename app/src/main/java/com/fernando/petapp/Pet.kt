@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 // Defino el objeto Perro
 @Entity
 data class Pet(
-    @PrimaryKey val id: Int,
-    @ColumnInfo(name = "PrimerNombre") val nombreDelPerro: String?,
-    @ColumnInfo(name = "Raza") val razaDelPerro: String?
+    @PrimaryKey(autoGenerate = true) var id: Int? = 0,
+    @ColumnInfo(name = "PrimerNombre") val nombre: String,
+    @ColumnInfo(name = "Raza") val raza: String,
+    @ColumnInfo(name = "url") val imagenUrl: String?
 )
