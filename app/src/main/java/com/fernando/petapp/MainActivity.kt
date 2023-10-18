@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +28,6 @@ private lateinit var binding: ActivityMainBinding
 
 private lateinit var adapter: AdapterPet
 
-private lateinit var database: DatabaseReference
 
 
 
@@ -58,45 +58,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun nuevoPerroFireBase(idPerroDB: String, id: Int, nombre: String, raza: String, url: String) {
-        val perro = Pet(id, nombre, raza, url)
 
-        database.child("Perros").child(idPerroDB).setValue(perro).addOnSuccessListener {
-            Log.i("FireBase", "Se han subido los datos con exito")
-        }
-            .addOnFailureListener {
-                Log.i("FireBase", "No se han subido los datos con exito")
-            }
-
-//        database.child("Perro").removeValue(null) para borrar sirve
-        database.push()
-    }
 
     private fun FireBaseIniciador() {
-        database = Firebase.database.reference
-        nuevoPerroFireBase("Perro2",4, "Kiwi5", "rarar", "rarrara")
+        val db = Firebase.firestore
 
+        val perros = db.collection("perros")
 
+        val data1 = hashMapOf(
+            "id" to 1,
+            "nombre" to "funcionaFire",
+            "raza" to "american",
+            "imagenUrl" to "vacio",
+        )
+        perros.document("PERRO").set(data1)
 
-        // FireBase trabaja con clave - Valor,  message es la clave y el valor se lo añadimos con "setValue"
-//        val myRef = database.getReference("message")
-//        myRef.setValue("Hello, World!")
-//
-//        // Read from the database, añadimos un listener a la variable o referencia directa database.getReference("message").addValueEventListener
-//        database.getReference("valor1").addValueEventListener(object: ValueEventListener {
-//
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                val value = snapshot.getValue<Int>()
-//                Log.d(TAG, "Value is: " + value)
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.w(TAG, "Failed to read value.", error.toException())
-//            }
-//
-//        })
 
     }
 

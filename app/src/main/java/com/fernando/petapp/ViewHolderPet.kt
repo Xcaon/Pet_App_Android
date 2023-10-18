@@ -14,7 +14,7 @@ class ViewHolderPet(view: View) : RecyclerView.ViewHolder(view) {
         var imagen = PetItem.imagenUrl ?: R.drawable.descarga
 
         Picasso.get()
-            .load(R.drawable.titulo)
+            .load(R.drawable.kiwi_agua)
             .error(R.drawable.descarga)
             .into(binding.ivImagen)
         binding.tvNombre.text = PetItem.nombre.toString()

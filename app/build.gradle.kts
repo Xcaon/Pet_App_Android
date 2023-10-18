@@ -50,6 +50,7 @@ dependencies {
     // Corutinas
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
 
     // room
     val room_version = "2.5.0"
