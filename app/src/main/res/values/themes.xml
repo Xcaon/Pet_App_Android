@@ -3,7 +3,24 @@
     <style name="Base.Theme.PetApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#009431</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="Theme.PetApp" parent="Base.Theme.PetApp" />
+
+    <style name="textoNormales">
+        <item name="colorPrimary">#4F4F4F</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/work_sans_semibold</item>
+    </style>
+
+    <style name="menuInferiorEstilos">
+        <item name="backgroundTint">@color/colorPrimario</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="itemIconTint">@color/white</item>
+    </style>
+
 </resources>

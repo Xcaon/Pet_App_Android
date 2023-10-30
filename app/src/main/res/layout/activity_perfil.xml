@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:context=".activityPerfil">
+            <!-- 1 Parte-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:cardCornerRadius="15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/kiwi_agua"
+                        android:contentDescription="@string/perfil_usuario"></ImageView>
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_image_text"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_NombreUsuaro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:text="Nombre"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_editPerfil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/editar_perfil"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCC" />
+            <!-- 2 Parte-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general">
+
+                <TextView
+                    style="@style/Base.Theme.PetApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Gestiona tus animales"
+                    android:textColor="@color/verde_texto_primario"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/perro"></ImageView>
+
+                <TextView
+                    android:id="@+id/tv_consultarPublicaciones"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="Consultar mis publicaciones"></TextView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add"></ImageView>
+
+                <TextView
+                    android:id="@+id/tv_addDog"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="Añadir otro Perro"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/adopciones"></ImageView>
+
+                <TextView
+                    android:id="@+id/tv_misAdopciones"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="Mis adopciones"></TextView>
+
+            </LinearLayout>
+
+            <!--    Tercera parte -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCC" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general">
+
+                <TextView
+                    style="@style/Base.Theme.PetApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Gestiona tus datos"
+                    android:textColor="@color/verde_texto_primario"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/basededatos"></ImageView>
+
+                <TextView
+                    android:id="@+id/tv_deleteData"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="Eliminar mis datos"></TextView>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCC" />
+
+            <!--    Cuarta zona -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general">
+
+                <TextView
+                    style="@style/Base.Theme.PetApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ajustes de la aplicación"
+                    android:textColor="@color/verde_texto_primario"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icono_perro"></ImageView>
+
+                <TextView
+                    android:id="@+id/tv_ayuda_un_perro"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="¿Quieres ayudar a un perruno?"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icono_info"></ImageView>
+
+                <TextView
+                    android:id="@+id/tv_reportarPublicacion"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="Reportar publicación"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="100dp"
+                android:padding="@dimen/padding_perfil_general"
+                android:paddingLeft="40dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icono_logut"></ImageView>
+
+                <TextView
+                    android:id="@+id/logout"
+                    style="@style/textoNormales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_perfil_general"
+                    android:text="Cerrar Sesión"></TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menu_bottom_opciones"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        style="@style/menuInferiorEstilos"
+        app:menu="@menu/menu_bottom"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</FrameLayout>

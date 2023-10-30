@@ -28,7 +28,13 @@
         android:id="@+id/et_dialog_raza"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Introduce la raza del perro"></EditText>
+        android:hint="Introduce la raza del perro.."></EditText>
+
+    <EditText
+        android:id="@+id/et_dialog_imagenurl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Introduce la url de la imagen.."></EditText>
 
     <LinearLayout
         android:layout_width="match_parent"

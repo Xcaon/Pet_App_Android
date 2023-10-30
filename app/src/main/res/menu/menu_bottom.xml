@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuItemInicio"
+        android:title="Inicio"
+        android:icon="@drawable/icono_casa_inicio" />
+    <item android:id="@+id/menuItemFavoritos"
+        android:title="Favoritos"
+        android:icon="@drawable/icon_fav" />
+    <item android:id="@+id/menuItemNovedades"
+        android:title="Novedades"
+        android:icon="@drawable/baseline_newspaper_24" />
+    <item android:id="@+id/menuItemMensajes"
+        android:title="Mensajes"
+        android:icon="@drawable/icon_mensaje" />
+    <item android:id="@+id/menuItemTu"
+        android:title="Tú"
+        android:icon="@drawable/icon_person" />
+</menu>

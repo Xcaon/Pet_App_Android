@@ -14,13 +14,14 @@ class ViewHolderPet(view: View) : RecyclerView.ViewHolder(view) {
         var imagen = PetItem.imagenUrl ?: R.drawable.descarga
 
         Picasso.get()
-            .load(R.drawable.kiwi_agua)
+            .load(PetItem.imagenUrl.toString())
             .error(R.drawable.descarga)
             .into(binding.ivImagen)
         binding.tvNombre.text = PetItem.nombre.toString()
         binding.tvRaza.text = PetItem.raza.toString()
 
         itemView.setOnClickListener {
+            // layouPosition devuelve la posicion en la lista del item
             OnItemSelected(layoutPosition)
         }
 

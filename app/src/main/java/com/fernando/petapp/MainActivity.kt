@@ -1,13 +1,16 @@
 package com.fernando.petapp
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.icu.lang.UCharacter.VerticalOrientation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
@@ -29,21 +32,17 @@ private lateinit var binding: ActivityMainBinding
 private lateinit var adapter: AdapterPet
 
 
+// Inicializamos una lista vacia
+var listaPets = mutableListOf<Pet>(
+    Pet(id = 1, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
+    Pet(id = 2, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
+    Pet(id = 3, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
+    Pet(id = 4, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
+    Pet(id = 5, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
+    Pet(id = 6, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
+    Pet(id = 7, nombre = "bulldog", "bull", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Racib%C3%B3rz_2007_082.jpg/320px-Racib%C3%B3rz_2007_082.jpg"),
 
 
-var listaPets = mutableListOf(
-    Pet(
-        id = 1,
-        nombre = "Kiwi",
-        raza = "American Stanford",
-        imagenUrl = null
-    ),
-    Pet(
-        id = 1,
-        nombre = "Kiwi",
-        raza = "American Stanford",
-        imagenUrl = null
-    )
 )
 
 class MainActivity : AppCompatActivity() {
@@ -52,80 +51,86 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         RecyclerInit()
-        configListener()
-        bdInit()
-        FireBaseIniciador()
+        menuInferiorListener()
 
     }
 
-
-
-    private fun FireBaseIniciador() {
-        val db = Firebase.firestore
-
-        val perros = db.collection("perros")
-
-        val data1 = hashMapOf(
-            "id" to 1,
-            "nombre" to "funcionaFire",
-            "raza" to "american",
-            "imagenUrl" to "vacio",
-        )
-        perros.document("PERRO").set(data1)
-
-
+    private fun menuInferiorListener() {
+        val menuAbajo = binding.menuBottomOpciones
+        menuAbajo.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menuItemInicio -> {
+                    loadActivity("MainActivity")
+                    true
+                }
+                R.id.menuItemFavoritos -> {
+                    Log.i("Fernando", "hola2");
+                    true
+                }
+                R.id.menuItemNovedades -> {
+                    Log.i("Fernando", "hola3");
+                    true
+                }
+                R.id.menuItemMensajes -> {
+                    Log.i("Fernando", "hola2");
+                    true
+                }
+                R.id.menuItemTu -> {
+                    loadActivity("activityPerfil")
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
     }
 
-    private fun bdInit() {
+    private fun loadActivity(actividad: String){
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "AppDataBase"
-        ).build()
-
-        val listaDePerros : Pet = Pet( null,"Sergio", "Comunista", null)
-
-        CoroutineScope(Dispatchers.IO).launch {
-            db.userDao().insertarPerro(listaDePerros)
-
-            val listaDePerrosDevuelta = db.userDao().getAll()
-//            Log.i("Fernando", "Esta es la lista devuelta: $listaDePerrosDevuelta")
-            listaPets.plusAssign(listaDePerrosDevuelta)
-            runOnUiThread {
-                adapter.notifyDataSetChanged()
+        when(actividad) {
+            "activityPerfil" -> {
+                val intent = Intent(this, activityPerfil::class.java)
+                startActivity(intent)
+            }
+            "MainActivity" -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
 
-
-
     }
 
-    private fun configListener() {
 
-        binding.addDog.setOnClickListener {
-            showDialog()
-        }
-
-
-    }
+//    private fun configListener() {
+//
+//        binding.addDog.setOnClickListener {
+//            showDialog()
+//        }
+//
+//
+//
+//    }
 
     private fun showDialog() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_perros)
         dialog.show()
 
+
         val btSalir = dialog.findViewById<Button>(R.id.bt_salirDialog)
         val btIntroducirPerro = dialog.findViewById<Button>(R.id.bt_introducirPerro)
         val edNombrePerro = dialog.findViewById<EditText>(R.id.et_dialog_nombre)
         val edRazaPerro = dialog.findViewById<EditText>(R.id.et_dialog_raza)
+        val edImagenUrl = dialog.findViewById<EditText>(R.id.et_dialog_imagenurl)
 
         btSalir.setOnClickListener {
             cerrarDialogo(dialog)
         }
 
         btIntroducirPerro.setOnClickListener {
-            if ( edNombrePerro.text.toString().isNotEmpty()  && edRazaPerro.text.toString().isNotEmpty()  ){
-                listaPets.add(Pet( nombre = edNombrePerro.text.toString(), raza = edRazaPerro.text.toString(), imagenUrl = null))
+            if ( edNombrePerro.text.toString().isNotEmpty()  && edRazaPerro.text.toString().isNotEmpty() && edImagenUrl.text.toString().isNotEmpty() ){
+                listaPets.add(Pet(0, edNombrePerro.text.toString(), edRazaPerro.text.toString(), edImagenUrl.text.toString() ))
                 actualizarListadoRecycler()
                 cerrarDialogo(dialog)
             } else {
@@ -137,6 +142,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun actualizarListadoRecycler() {
         adapter.notifyDataSetChanged()
     }
@@ -146,19 +152,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun RecyclerInit() {
-        adapter = AdapterPet(listaPets, { position -> OnItemSelected(position) }) {position -> OnLongItemSelected(position)}
+        adapter = AdapterPet(listaPets, { petPosition -> OnItemSelected(petPosition) }) {petPosition -> OnLongItemSelected(petPosition)}
         binding.rvRecyclerPet.setHasFixedSize(true)
-        binding.rvRecyclerPet.layoutManager =
-            GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
+        binding.rvRecyclerPet.layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
         binding.rvRecyclerPet.adapter = adapter
     }
 
-    private fun OnItemSelected(position: Int){
-        Log.i("fernando", "Han tocado una ventana con un click en la pos $position")
+    private fun OnItemSelected(petPosition: Int?){
+        Log.i("fernando", "Han tocado una ventana con un click en la pos $petPosition")
     }
 
-    private fun OnLongItemSelected(position: Int){
-        Log.i("fernando", "Han tocado una ventana con un click largo en la pos $position")
+    private fun OnLongItemSelected(petPosition: Int){
+        Log.i("fernando", "Han tocado una ventana con un click largo en la pos $petPosition")
     }
 
 

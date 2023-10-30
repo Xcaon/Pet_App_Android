@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PetApp</string>
+    <string name="perfil_usuario">Imagen de perfil del usuario</string>
+    <string name="editar_perfil"><u>Editar Perfil</u></string>
 </resources>
